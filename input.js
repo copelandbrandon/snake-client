@@ -13,17 +13,26 @@ const setupInput = function (conn) {
 };
 
 const handleUserInput = function (key) {
+  //terminate program
   if (key === '\u0003') {
     console.log('Connection terminated by user');
     process.exit();
-  } else if (key === 'w') {
+  } else if (key === 'w') { //start of movement keys
     connection.write('Move: up');
   } else if (key === 'a') {
     connection.write('Move: left');
   } else if (key === 's') {
     connection.write('Move: down');
-  } else if(key === 'd') {
+  } else if (key === 'd') {
     connection.write('Move: right');
+  } else if (key === 'u') { //start of canned messages
+    connection.write('Say: Howdy!')
+  } else if (key === 'i') {
+    connection.write('Say: Gotta Go Fast')
+  } else if (key === 'o') {
+    connection.write('Say: Zoom Zoom')
+  } else if (key === 'p') {
+    connection.write('Say: Bye Bye!')
   }
 };
 
