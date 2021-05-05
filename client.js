@@ -12,7 +12,8 @@ const connect = function () {
   conn.on('connect', ()=>{
     console.log('Connection established to game server');
     conn.write('Name: BKC');
-  })
+
+  });
 
   conn.on('data', (message)=>{
     console.log('Server sent:', message);
