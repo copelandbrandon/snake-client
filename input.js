@@ -1,4 +1,5 @@
 const net = require('net');
+const {moveUp, moveLeft, moveRight, moveDown, messages} = require('./constants');
 let connection;
 
 // setup interface to handle user input from stdin
@@ -18,22 +19,18 @@ const handleUserInput = function (key) {
     console.log('Connection terminated by user');
     process.exit();
   } else if (key === 'w') { //start of movement keys
-    connection.write('Move: up');
+    connection.write(moveUp);
   } else if (key === 'a') {
-    connection.write('Move: left');
+    connection.write(moveLeft);
   } else if (key === 's') {
-    connection.write('Move: down');
+    connection.write(moveDown);
   } else if (key === 'd') {
-    connection.write('Move: right');
-  } else if (key === 'u') { //start of canned messages
-    connection.write('Say: Howdy!')
-  } else if (key === 'i') {
-    connection.write('Say: Gotta Go Fast')
-  } else if (key === 'o') {
-    connection.write('Say: Zoom Zoom')
-  } else if (key === 'p') {
-    connection.write('Say: Bye Bye!')
+    connection.write(moveRight);
+  } else if (Object.keys(messages).includes(key)) { //prints messages
+    connection.write(messages[key])
   }
+
+  
 };
 
 
